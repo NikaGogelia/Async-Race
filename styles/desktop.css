@@ -1,0 +1,9 @@
+@media only screen and (min-width: 1024px) {
+  /* Main */
+
+  /* Garage */
+  .car {
+    width: 12em;
+    height: auto;
+  }
+}
