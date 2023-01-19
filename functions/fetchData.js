@@ -23,11 +23,7 @@ const fetchData = async (endpoint, method, headers, dataParams) => {
 
 // HTTP Methods Request Function
 const rest = {
-  get: (api, arr, render) =>
-    fetchData(api, "GET").then((res) => {
-      arr = res;
-      render(arr);
-    }),
+  get: (api) => fetchData(api, "GET"),
   post: (api, data) =>
     fetchData(api, "POST", { "Content-Type": "application/json" }, data),
   put: (api, data) =>

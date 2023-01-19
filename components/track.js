@@ -18,7 +18,7 @@ export const track = (car) => {
                 <button id="start" data-index="${id}">start</button>
                 <button id="stop" data-index="${id}">stop</button>
             </div>
-            <p>${name}</p>
+            <p style="text-transform: capitalize;">${name}</p>
         </div>
         <div class="car-container">
           <svg class="car" data-index="${id}" fill="${color}" id="eYC6Xx4uWHK1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 640" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
