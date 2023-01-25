@@ -14,7 +14,7 @@ export const track = (car) => {
                 <button id="select" data-index="${id}">select</button>
                 <button id="remove" data-index="${id}">remove</button>
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column start-stop">
                 <button id="start" data-index="${id}">start</button>
                 <button id="stop" data-index="${id}">stop</button>
             </div>

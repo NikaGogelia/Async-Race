@@ -2,20 +2,18 @@
 import { rest } from "./fetchData.js";
 import { engineApi } from "../index.js";
 
-export const start = (button, cars, id, trackWidth, driving) => {
+export const start = (cars, id, trackWidth) => {
   let drive = {};
   let driveStatus = "";
-  button.disabled = true;
 
   rest
     .patch(`${engineApi}?id=${id}&status=started`)
     .then((res) => (drive = res));
   rest.patch(`${engineApi}?id=${id}&status=drive`).then((res) => {
     if (res.success === true) {
-      driveStatus = res?.success;
+      driveStatus = res.success;
     } else {
       alert("Car has been stopped suddenly. It's engine was broken down.");
-      button.disabled = false;
     }
   });
 
@@ -31,11 +29,11 @@ export const start = (button, cars, id, trackWidth, driving) => {
         }
 
         cars.forEach((car) => {
-          if (car.getAttribute("data-index") === id) {
+          if (+car.getAttribute("data-index") === +id) {
             car.style.transform = `translateX(${i}px)`;
           }
         });
       }
     }, 100);
-  }, 2000);
+  }, 1000);
 };

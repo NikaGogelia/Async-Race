@@ -3,7 +3,7 @@
 import { paginationButton } from "../components/paginationButton.js";
 // Functions
 import { rest } from "../functions/fetchData.js";
-import { garageApi, engineApi, pages } from "../index.js";
+import { garageApi, pages } from "../index.js";
 import { generateCars } from "../functions/generateCars.js";
 import { displayPaginatedItems } from "../functions/displayPaginatedItems.js";
 // Variables
@@ -62,10 +62,10 @@ export const garage = (arr) => {
   const tracksContainer = document.querySelector(".car-list");
   const paginationButtons = document.querySelectorAll(".pagination-button");
 
-  // Garage Options
+  // Generate Cars
   generate.addEventListener("click", () => generateCars(arr, garage));
 
-  // Display Paginated Tracks
+  // Display Paginated Items
   displayPaginatedItems(arr, tracksContainer, row, currentPage);
 
   // Change Paginated Page

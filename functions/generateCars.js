@@ -2,7 +2,6 @@
 import { rest } from "./fetchData.js";
 import { garageApi } from "../index.js";
 import { carNames } from "../data/carNames.js";
-import { garage } from "../pages/garage.js";
 
 const generateNumber = 100;
 

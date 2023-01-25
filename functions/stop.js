@@ -2,9 +2,7 @@
 import { engineApi } from "../index.js";
 import { rest } from "./fetchData.js";
 
-export const stop = (button, cars, id) => {
-  button.disabled = true;
-
+export const stop = (cars, id) => {
   let drive = {};
   rest
     .patch(`${engineApi}?id=${id}&status=stopped`)
@@ -12,7 +10,7 @@ export const stop = (button, cars, id) => {
 
   setTimeout(() => {
     cars.forEach((car) => {
-      if (car.getAttribute("data-index") === id) {
+      if (+car.getAttribute("data-index") === +id) {
         car.style.transform = `translateX(${drive.velocity}px)`;
       }
     });
