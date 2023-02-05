@@ -1,5 +1,6 @@
 "use strict";
 import { rest } from "./functions/fetchData.js";
+import { loader } from "./components/loader.js";
 import { garage } from "./pages/garage.js";
 import { winners } from "./pages/winners.js";
 
@@ -18,11 +19,14 @@ let isPlaying = false;
 
 // First Load Garage Page
 window.onload = () => {
+  loader();
   // Render Cars
-  rest.get(garageApi).then((res) => {
-    carList = res;
-    garage(carList);
-  });
+  setTimeout(() => {
+    rest.get(garageApi).then((res) => {
+      carList = res;
+      garage(carList);
+    });
+  }, 2000);
 
   // Play Audio By Default
   // music.play();
@@ -55,16 +59,22 @@ navLinks.forEach((button) => {
   button.addEventListener("click", () => {
     switch (button.id) {
       case "winners":
-        rest.get(winnersApi).then((res) => {
-          winnerList = res;
-          winners(winnerList);
-        });
+        loader();
+        setTimeout(() => {
+          rest.get(winnersApi).then((res) => {
+            winnerList = res;
+            winners(winnerList);
+          });
+        }, 2000);
         break;
       case "garage":
-        rest.get(garageApi).then((res) => {
-          carList = res;
-          garage(carList);
-        });
+        loader();
+        setTimeout(() => {
+          rest.get(garageApi).then((res) => {
+            carList = res;
+            garage(carList);
+          });
+        }, 2000);
         break;
     }
   });

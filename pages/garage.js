@@ -1,12 +1,8 @@
 "use strict";
-// Components
-import { paginationButton } from "../components/paginationButton.js";
-// Functions
 import { rest } from "../functions/fetchData.js";
 import { garageApi, pages } from "../index.js";
 import { generateCars } from "../functions/generateCars.js";
 import { displayPaginatedItems } from "../functions/displayPaginatedItems.js";
-// Variables
 import { selectedId } from "../functions/trackOptions.js";
 
 export const garage = (arr) => {
@@ -38,8 +34,8 @@ export const garage = (arr) => {
             </form>
         </div>
         <div class="garage-options d-flex">
-          <button id="race">Race</button>
-          <button id="reset">Reset</button>
+          <button id="race">race cars</button>
+          <button id="stop-cars">stop cars</button>
           <button id="generate">Generate Cars</button>
         </div>
         <div class="cars-container">
@@ -47,10 +43,9 @@ export const garage = (arr) => {
             <div class="car-list"></div>
         </div>
         <div class="pagination d-flex justify-content-center align-items-center">
-          ${Array(pageCount)
-            .fill("")
-            .map((_, index) => paginationButton(index + 1))
-            .join("")}
+          <button id="prev">PREV</button>
+          <div id="current-page">${currentPage} / ${pageCount}</div>
+          <button id="next">NEXT</button>
         </div>
     `;
 
@@ -60,7 +55,7 @@ export const garage = (arr) => {
   const form = document.getElementById("form");
   const generate = document.getElementById("generate");
   const tracksContainer = document.querySelector(".car-list");
-  const paginationButtons = document.querySelectorAll(".pagination-button");
+  const paginationButtons = document.querySelectorAll(".pagination > button");
 
   // Generate Cars
   generate.addEventListener("click", () => generateCars(arr, garage));
@@ -70,10 +65,22 @@ export const garage = (arr) => {
 
   // Change Paginated Page
   paginationButtons.forEach((button) => {
+    const currentPageDiv = document.getElementById("current-page");
     button.addEventListener("click", () => {
-      displayPaginatedItems(arr, tracksContainer, row, button.id);
-      currentPage = button.id;
-      localStorage.setItem("currentPage", currentPage);
+      switch (button.id) {
+        case "prev":
+          currentPage <= 1 ? (currentPage = 1) : currentPage--;
+          localStorage.setItem("currentPage", currentPage);
+          displayPaginatedItems(arr, tracksContainer, row, currentPage);
+          currentPageDiv.innerHTML = `${currentPage} / ${pageCount}`;
+          break;
+        case "next":
+          currentPage >= pageCount ? (currentPage = pageCount) : currentPage++;
+          localStorage.setItem("currentPage", currentPage);
+          displayPaginatedItems(arr, tracksContainer, row, currentPage);
+          currentPageDiv.innerHTML = `${currentPage} / ${pageCount}`;
+          break;
+      }
     });
   });
 
