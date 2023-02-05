@@ -20,7 +20,7 @@ export const carNames = [
   "Chrysler",
   "Citroen",
   "Continental",
-  "CUPRA",
+  "SUPRA",
   "Dacia",
   "Daewoo",
   "Daihatsu",

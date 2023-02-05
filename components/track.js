@@ -15,8 +15,8 @@ export const track = (car) => {
                 <button id="remove" data-index="${id}">remove</button>
             </div>
             <div class="d-flex flex-column start-stop">
-                <button id="start" data-index="${id}">start</button>
-                <button id="stop" data-index="${id}">stop</button>
+                <button id="start" data-index="${id}">start Engine</button>
+                <button id="stop" data-index="${id}">stop Engine</button>
             </div>
             <p style="text-transform: capitalize;">${name}</p>
         </div>

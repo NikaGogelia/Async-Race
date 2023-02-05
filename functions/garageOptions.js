@@ -13,7 +13,7 @@ export const garageOptions = (arr, cars, trackWidth) => {
             start(cars, arr[i].id, trackWidth);
           }
           break;
-        case "reset":
+        case "stop-cars":
           for (let i = 0; i < arr.length; i++) {
             stop(cars, arr[i].id);
           }
